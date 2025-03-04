@@ -61,6 +61,8 @@ func initTracerProvider() {
 	defer provider.Shutdown()
 
 	otel.SetTracerProvider(provider)
+
+	tracer = otel.Tracer("checkoutservice")
 }
 
 type checkoutService struct {
@@ -256,7 +258,6 @@ type orderPrep struct {
 }
 
 func (cs *checkoutService) prepareOrderItemsAndShippingQuoteFromCart(ctx context.Context, userID, userCurrency string, address *pb.Address) (orderPrep, error) {
-
 	ctx, span := tracer.Start(ctx, "prepareOrderItemsAndShippingQuoteFromCart")
 	defer span.End()
 

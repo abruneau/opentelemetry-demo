@@ -44,14 +44,14 @@ jobs:
           #   tag_suffix: emailservice
           #   context: ./
           #   setup-qemu: true
-          # - file: ./src/frauddetectionservice/Dockerfile
-          #   tag_suffix: frauddetectionservice
-          #   context: ./
-          #   setup-qemu: true
-          - file: ./src/frontend/Dockerfile
-            tag_suffix: frontend
+          - file: ./src/frauddetectionservice/Dockerfile
+            tag_suffix: frauddetectionservice
             context: ./
             setup-qemu: true
+          # - file: ./src/frontend/Dockerfile
+          #   tag_suffix: frontend
+          #   context: ./
+          #   setup-qemu: true
           # - file: ./src/frontendproxy/Dockerfile
           #   tag_suffix: frontendproxy
           #   context: ./
