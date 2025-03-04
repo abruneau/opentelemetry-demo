@@ -1,5 +1,3 @@
-
-
 *~
 *.iml
 *.ipr
@@ -56,5 +54,4 @@ test/tracetesting/tracetesting-vars.yaml
 /src/shippingservice/proto/
 /src/productcatalogservice/genproto
 /src/currencyservice/proto
-/src/checkoutservice/genproto
 /src/accountingservice/genproto
