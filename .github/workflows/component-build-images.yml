@@ -160,6 +160,8 @@ jobs:
             OTEL_JAVA_AGENT_VERSION=${{ env.OTEL_JAVA_AGENT_VERSION }}
             OPENTELEMETRY_CPP_VERSION=${{ env.OPENTELEMETRY_CPP_VERSION }}
             TRACETEST_IMAGE_VERSION=${{ env.TRACETEST_IMAGE_VERSION }}
+            DD_GIT_COMMIT_SHA=$(git rev-parse HEAD)
+            DD_GIT_REPOSITORY_URL=github.com/abruneau/opentelemetry-demo/src/${{ matrix.file_tag.tag_suffix }}
           tags: |
             ghcr.io/abruneau/opentelemetry-demo:${{  github.ref_name }}-${{ matrix.file_tag.tag_suffix }}
             ghcr.io/abruneau/opentelemetry-demo:latest-${{ matrix.file_tag.tag_suffix }}
