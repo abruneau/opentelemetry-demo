@@ -11,7 +11,10 @@ COPY ./src/frontend/package*.json ./
 RUN npm ci
 
 FROM node:20-alpine AS builder
+ARG DATADOG_API_KEY
+ARG DATADOG_SITE
 RUN apk add --no-cache libc6-compat protobuf-dev protoc
+RUN npm install @datadog/datadog-ci
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY ./pb ./pb
@@ -19,6 +22,8 @@ COPY ./src/frontend .
 
 RUN npm run grpc:generate
 RUN npm run build
+
+RUN datadog-ci sourcemaps upload --service=frontend-web --release-version=1.12.0 --minified-path=.next/static --source-map-path=.next/static --minified-url=https://frontend:8080/_next/static
 
 FROM node:20-alpine AS runner
 WORKDIR /app

@@ -48,10 +48,10 @@ jobs:
             tag_suffix: frauddetectionservice
             context: ./
             setup-qemu: true
-          # - file: ./src/frontend/Dockerfile
-          #   tag_suffix: frontend
-          #   context: ./
-          #   setup-qemu: true
+          - file: ./src/frontend/Dockerfile
+            tag_suffix: frontend
+            context: ./
+            setup-qemu: true
           # - file: ./src/frontendproxy/Dockerfile
           #   tag_suffix: frontendproxy
           #   context: ./
@@ -162,6 +162,9 @@ jobs:
             TRACETEST_IMAGE_VERSION=${{ env.TRACETEST_IMAGE_VERSION }}
             DD_GIT_COMMIT_SHA=$(git rev-parse HEAD)
             DD_GIT_REPOSITORY_URL=github.com/abruneau/opentelemetry-demo/src/${{ matrix.file_tag.tag_suffix }}
+            DATADOG_SITE=${{ env.DATADOG_SITE }}
+            DATADOG_API_HOST=api.${{ env.DATADOG_SITE }}
+            DATADOG_API_KEY=${{ secrets.DATADOG_API_KEY }}
           tags: |
             ghcr.io/abruneau/opentelemetry-demo:${{  github.ref_name }}-${{ matrix.file_tag.tag_suffix }}
             ghcr.io/abruneau/opentelemetry-demo:latest-${{ matrix.file_tag.tag_suffix }}
