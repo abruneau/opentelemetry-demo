@@ -18,6 +18,8 @@ RUN --mount=type=cache,target=/go/pkg/mod/ \
     go mod download \
     && go list -e -f '{{range .Imports}}{{.}} {{end}}' tools.go | CGO_ENABLED=0 xargs go install -mod=readonly
 
+RUN go install github.com/DataDog/orchestrion@latest && orchestrion pin
+
 RUN --mount=type=cache,target=/go/pkg/mod/ \
     --mount=type=cache,target=/root/.cache/go-build \
     --mount=type=bind,rw,source=./src/checkoutservice,target=. \
