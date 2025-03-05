@@ -23,10 +23,6 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-USER root
-RUN mkdir -p "/var/log/opentelemetry/dotnet"
-RUN chown app "/var/log/opentelemetry/dotnet"
-RUN chown app "/app/instrument.sh"
 USER app
 
-ENTRYPOINT ["./instrument.sh", "dotnet", "AccountingService.dll"]
+ENTRYPOINT ["dotnet", "AccountingService.dll"]
