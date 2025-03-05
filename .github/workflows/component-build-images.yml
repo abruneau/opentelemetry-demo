@@ -32,10 +32,10 @@ jobs:
           #   tag_suffix: cartservice
           #   context: ./
           #   setup-qemu: false
-          # - file: ./src/checkoutservice/Dockerfile
-          #   tag_suffix: checkoutservice
-          #   context: ./
-          #   setup-qemu: true
+          - file: ./src/checkoutservice/Dockerfile
+            tag_suffix: checkoutservice
+            context: ./
+            setup-qemu: true
           # - file: ./src/currencyservice/Dockerfile
           #   tag_suffix: currencyservice
           #   context: ./
