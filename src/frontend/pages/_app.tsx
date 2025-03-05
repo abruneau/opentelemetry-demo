@@ -79,7 +79,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           service: 'frontend-web',
           env: 'prod',
           // Specify a version number to identify the deployed version of your application in Datadog
-          // version: '1.0.0',
+          version: '1.12.0',
           sessionSampleRate: 100,
           sessionReplaySampleRate: 100,
           defaultPrivacyLevel: 'mask-user-input',
