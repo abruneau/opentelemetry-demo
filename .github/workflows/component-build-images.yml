@@ -162,8 +162,8 @@ jobs:
             TRACETEST_IMAGE_VERSION=${{ env.TRACETEST_IMAGE_VERSION }}
             DD_GIT_COMMIT_SHA=$(git rev-parse HEAD)
             DD_GIT_REPOSITORY_URL=github.com/abruneau/opentelemetry-demo/src/${{ matrix.file_tag.tag_suffix }}
-            DATADOG_SITE=${{ env.DATADOG_SITE }}
-            DATADOG_API_HOST=api.${{ env.DATADOG_SITE }}
+            DATADOG_SITE=${{ vars.DATADOG_SITE }}
+            DATADOG_API_HOST=api.${{ vars.DATADOG_SITE }}
             DATADOG_API_KEY=${{ secrets.DATADOG_API_KEY }}
           tags: |
             ghcr.io/abruneau/opentelemetry-demo:${{  github.ref_name }}-${{ matrix.file_tag.tag_suffix }}
