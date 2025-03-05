@@ -22,8 +22,8 @@ COPY ./src/frontend .
 
 RUN npm run grpc:generate
 RUN npm run build
-
-RUN datadog-ci sourcemaps upload --service=frontend-web --release-version=1.12.0 --minified-path=.next/static --source-map-path=.next/static --minified-url=https://frontend:8080/_next/static
+RUN npm install -g @datadog/datadog-ci
+RUN datadog-ci sourcemaps upload .next/static --service=frontend-web --release-version=1.12.0 --minified-path-prefix=https://on-prem-frontend.apm-sm818-sbx-hjh.web-enedis.fr/_next/static
 
 FROM node:20-alpine AS runner
 WORKDIR /app
