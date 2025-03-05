@@ -20,10 +20,10 @@ jobs:
       fail-fast: false
       matrix:
         file_tag:
-          - file: ./src/accountingservice/Dockerfile
-            tag_suffix: accountingservice
-            context: ./
-            setup-qemu: true
+          # - file: ./src/accountingservice/Dockerfile
+          #   tag_suffix: accountingservice
+          #   context: ./
+          #   setup-qemu: true
           # - file: ./src/adservice/Dockerfile
           #   tag_suffix: adservice
           #   context: ./
@@ -44,10 +44,10 @@ jobs:
           #   tag_suffix: emailservice
           #   context: ./
           #   setup-qemu: true
-          - file: ./src/frauddetectionservice/Dockerfile
-            tag_suffix: frauddetectionservice
-            context: ./
-            setup-qemu: true
+          # - file: ./src/frauddetectionservice/Dockerfile
+          #   tag_suffix: frauddetectionservice
+          #   context: ./
+          #   setup-qemu: true
           - file: ./src/frontend/Dockerfile
             tag_suffix: frontend
             context: ./
