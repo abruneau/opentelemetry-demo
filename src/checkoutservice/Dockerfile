@@ -6,8 +6,6 @@ FROM golang:1.23-alpine AS builder
 
 WORKDIR /usr/src/app/
 
-RUN export GOFLAGS="${GOFLAGS} '-toolexec=orchestrion toolexec'"
-
 RUN apk update \
     && apk add --no-cache make protobuf-dev
 
@@ -17,8 +15,6 @@ RUN --mount=type=cache,target=/go/pkg/mod/ \
     --mount=type=bind,source=./src/checkoutservice/tools.go,target=tools.go \
     go mod download \
     && go list -e -f '{{range .Imports}}{{.}} {{end}}' tools.go | CGO_ENABLED=0 xargs go install -mod=readonly
-
-RUN go install github.com/DataDog/orchestrion@latest && orchestrion pin
 
 RUN --mount=type=cache,target=/go/pkg/mod/ \
     --mount=type=cache,target=/root/.cache/go-build \

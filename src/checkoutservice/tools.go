@@ -12,6 +12,7 @@ package tools
 // This ensures that all systems use the same version of tools in addition to regular dependencies.
 
 import (
+	_ "github.com/DataDog/orchestrion"
 	_ "google.golang.org/grpc/cmd/protoc-gen-go-grpc"
 	_ "google.golang.org/protobuf/cmd/protoc-gen-go"
 )
