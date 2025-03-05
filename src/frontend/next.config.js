@@ -78,7 +78,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: `frame-ancestors 'self' ${domain};`,
+            value: `frame-ancestors 'self' on-prem-frontend.apm-sm818-sbx-hjh.web-enedis.fr;`,
           },
         ],
       },
