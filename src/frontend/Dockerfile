@@ -13,8 +13,8 @@ RUN npm ci
 FROM node:20-alpine AS builder
 ARG DATADOG_API_KEY
 ARG DATADOG_SITE
+ARG DATADOG_API_HOST
 RUN apk add --no-cache libc6-compat protobuf-dev protoc
-RUN npm install @datadog/datadog-ci
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY ./pb ./pb
@@ -45,7 +45,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
-ENV PORT 8080
+ENV PORT=8080
 EXPOSE ${PORT}
 
 ENTRYPOINT npm start
